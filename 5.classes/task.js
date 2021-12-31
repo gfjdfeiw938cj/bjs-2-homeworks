@@ -1,3 +1,4 @@
+
 //                                  Задание №1
 class PrintEditionItem {
   constructor(...arg) { 
