@@ -1,3 +1,4 @@
+
 //                                             Задание 1
 function getArrayParams(arr) {
   let min, max, avg;

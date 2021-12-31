@@ -1,3 +1,4 @@
+
 //                                      Задание 1 
 function compareArrays(arr1, arr2) {
   let result;
