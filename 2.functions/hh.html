@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//                        Задания выпоненые иначе(требовалась доработка в рамках задания) 
+//                                            (На память)                                            
+
+ //                                                 Задание 1
+// function getArrayParams(arr) {
+//   let min, max, avg;
+//   max = Math.max.apply(null, arr);
+//   min = Math.min.apply(null, arr);
+//   avg = arr.reduce((sum, el) => sum + el,0) / arr.length;
+//   return { min: min, max: max, avg: Number(avg.toFixed(2))};
+// }
+
+// //                                                Задание 2
+// // worker это насадка
+// function worker(arr) {
+//   let sum;
+//   sum  = arr.map(el => el.reduce((sum, el) => sum + el,0))
+//   return sum;
+// }
+
+// makeWork([[1,2,3],[4,5,6]])
+
+// //makeWork это мясорубка
+// function makeWork(arrOfArr, func) {
+//   let max;
+//   max = Math.max.apply(null,func(arrOfArr));
+//   return max;
+// }
+
+// makeWork([[1,2,3],[4,5,6]], worker)
+
+// //                                            Задание 3
+// // worker2 это насадка
+// function worker2(arr) {
+//   let difference
+//   difference = arr.map(el => Math.abs(Math.max.apply(null, el) - Math.min.apply(null, el))) 
+//   return difference
+// }
+
+// makeWork([[1,2,3],[4,5,6]], worker2)
+
+//                            Второй вариант выпоненые иначе всех 3 заданий  
+// Задание 1
+// function getArrayParams(arr) {
+//   let min, max, sum, avg;
+//   sum = 0;
+//   min = arr[0];
+//   max = min;
+
+//   for (i = 1; i < arr.length; ++i) {
+//       if (arr[i] > max) max = arr[i];
+//       if (arr[i] < min) min = arr[i];
+//   }
+
+//   for(let el of arr) {
+//     sum = sum + el;
+//   }
+
+//   avg = sum/arr.length;
+//   return { min: min, max: max, avg: Number(avg.toFixed(2))};
+// }
+//  // Задание 2
+// function worker(arr) {
+//   let sum = 0;
+//   for (let a = 0; a < arr.length; ++a) {
+//     for (let b = 0; b < arr[a].length; ++b) {
+//         sum = sum + arr[a][b];
+//     }
+//     arr[a]=sum;
+//     sum = 0;
+//   }
+//   return arr;  
+// }
+
+// function makeWork(arrOfArr, func) {
+//   let max, min;
+//   let sum = func(arrOfArr);
+//   min = sum[0];
+//   max = min;
+//   for (i = 1; i < sum.length; ++i) {
+//       if (sum[i] > max) max = sum[i];
+//       if (sum[i] < min) min = sum[i];
+//   }
+//   return max;
+// }
+
+// makeWork([[1,2,3],[4,5,6]], worker)
+
+// // Задание 3
+// function worker2(arr) {
+//   let differenceArr
+//   let arr1 = []
+//     for (let el of arr){
+//       differenceArr =  Math.abs(Math.max.apply(null, el) - Math.min.apply(null, el))
+//       arr1.push(differenceArr)    
+//     }
+   
+//   return arr1;  
+// }
+
+
+// makeWork([[10, 20, 30], [-40, -50, -65]], worker2)
+// console.log()
+// console.log()
+    </script>
+</body>
+</html>

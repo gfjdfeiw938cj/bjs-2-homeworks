@@ -1,0 +1,232 @@
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Document</title>
+// </head>
+// <body>
+//     <script>
+//                                       Два варианта реализации 3 задачи не вошедшие в task из netology
+//                  1 Вариант громоздкий большой неудачный (с условие на фильтр массива на уникальность)  )
+//                                    метод addMarks недореализован 
+// class Student {
+//   constructor(...arg) { 
+//  [this.name, this.gender, this.age] = arg 
+//   // this.subject = []
+//   this.allDisciplines = new Map();
+//   this.averageGradeSubject = new Map();
+//   // this.allDiscipliness = Object.fromEntries(this.allDisciplines.entries())
+//   this.allDiscipliness
+//   this.mediumAripheticSubject
+//   this.nameSubject
+//   this.Grades 
+//   }; 
+
+//   addMark(estimation, nameSubject){
+//     if(estimation >= 1 && estimation < 6){
+//         if(this.nameSubject === undefined) {
+//           this.nameSubject = []
+//           this.nameSubject.push(nameSubject)
+//           this.nameSubject.splice(0, this.nameSubject.length, ...(this.nameSubject.filter((el, ind) => { return this.nameSubject.indexOf(el) === ind})))
+//           let obj = this.nameSubject.map( el => {return {[el]:[]}})
+//           let ind = obj.findIndex(el => Object.keys(el).join() == nameSubject)
+//           obj[ind][nameSubject].push(estimation)
+//           this.Grades = obj
+//           let el = this.nameSubject.findIndex(el => el == nameSubject)
+//           this.allDisciplines.set(this.nameSubject[el], this.Grades[ind][nameSubject])
+//           return this.allDiscipliness = Object.fromEntries(this.allDisciplines.entries())        
+//         }else {
+//             this.nameSubject.push(nameSubject)
+//             if(this.nameSubject.every( el => (this.nameSubject.filter((el, ind) => {return this.nameSubject.indexOf(el) !== ind})).length < 1 )) {
+//             let obj = this.nameSubject.map( el => {return {[el]:[]}})
+//             this.Grades = obj
+//             this.nameSubject.splice(0, this.nameSubject.length, ...(this.nameSubject.filter((el, ind) => { return this.nameSubject.indexOf(el) === ind})))
+//             let ind = this.Grades.findIndex(el => Object.keys(el).join() == nameSubject)
+//             this.Grades[ind][nameSubject].push(estimation)
+//             let el = this.nameSubject.findIndex(el => el == nameSubject)
+//             this.allDisciplines.set(this.nameSubject[el], this.Grades[ind][nameSubject])
+//             return this.allDiscipliness = Object.fromEntries(this.allDisciplines.entries())
+//             }else{
+//             this.nameSubject.splice(0, this.nameSubject.length, ...(this.nameSubject.filter((el, ind) => { return this.nameSubject.indexOf(el) === ind})))
+//             let ind = this.Grades.findIndex(el => Object.keys(el).join() == nameSubject)
+//             this.Grades[ind][nameSubject].push(estimation)
+//             let el = this.nameSubject.findIndex(el => el == nameSubject)
+//             this.allDisciplines.set(this.nameSubject[el], this.Grades[ind][nameSubject])
+//             return this.allDiscipliness = Object.fromEntries(this.allDisciplines.entries())
+//             }       
+//         }     
+//     }else console.log("Ошибка, оценка должна быть числом от 1 до 5")
+//   }
+//   addMarks(nameSubject,...estimation){
+//     if(estimation.every( el => el >= 1 && el < 6)){
+     
+//       if(this.nameSubject === undefined) {
+        
+//       this.Grades = [];
+//       estimation.map(el => this.Grades.push(el));
+//       this.allDisciplines.set(this.nameSubject, this.Grades)
+//       return this.allDiscipliness = Object.fromEntries(this.allDisciplines.entries())
+//       }else {
+//       estimation.map(el => this.Grades.push(el));
+//       this.allDisciplines.set(this.nameSubject, this.Grades)
+//       return this.allDiscipliness = Object.fromEntries(this.allDisciplines.entries())
+//     }
+//     }else console.log("Ошибка, оценка должна быть числом от 1 до 5")
+//   }
+
+//   getAverageBySubject(nameSubject){
+    
+//     // this.averageGradeSubject = new Map(); 
+
+//     // let arrObjNameSubject = Object.values(student.allDiscipliness).filter( el => Object.keys(el).length > 1).map(el => el.mediumAriphetic)
+//     if(Object.keys(this.allDiscipliness).includes(nameSubject)){
+//     let sum = Object.values(this.allDiscipliness[nameSubject]).reduce((sum, current) => sum + current)
+//     let mediumAriphetic = Number((sum / Object.values(this.allDiscipliness[nameSubject]).length).toFixed(2))
+//     this.nameSubjectt = mediumAriphetic
+//     // this.averageGradeSubject.set(nameSubject, mediumAriphetic)
+//     // return this.mediumAripheticSubject = Object.fromEntries(this.averageGradeSubject.entries())
+//     }else console.log("Несуществующий предмет")
+//   }
+
+//   getAverage(){
+    
+//     let sum = Object.values(this.mediumAripheticSubject).reduce((sum, current) => sum + current)
+//     let mediumAripheticAll = Number((sum / Object.values(this.mediumAripheticSubject).length).toFixed(2))
+//     this.mediumAripheticAllSubjectsGrades = mediumAripheticAll
+//   }
+
+//   exclude(){
+//     delete this.allDisciplines
+//     delete this.averageGradeSubject
+//     // delete this.Grades
+//   };
+// }
+
+
+
+// let student = new Student("Тема","муж",29)
+
+// student.addMark(3, "algebra")
+// student.addMark(5, "algebra")
+// student.addMark(2, "geometry")
+// student.addMark(4, "geometry")
+// student.addMark(3,"Физика")
+// student.addMark(3,"Стереометрия")
+// student.addMark(3,"Русский")
+// student.addMark(4,"Биология")
+// student.addMarks("Геометрия", 4,4,3,4,4,3,3)
+// student.addMarks("Физика",2,3,4,5,4,3,4,2)
+// student.addMarks("Математика",2,4,5,5,4,5,4,3)
+// student.addMarks("Русский", 3,2,3,4,5,4,3,4)
+// student.addMarks("Биология", 3,5,2,4,5,3,2,2)
+// student.getAverageBySubject("algebra")
+// student.getAverageBySubject("geometry")
+// student.getAverageBySubject("Русский")
+// student.getAverageBySubject("Физика")
+// student.getAverageBySubject("Геометрия")
+// student.getAverage()
+// student.exclude()
+// console.log(student)
+// console.log(student.mediumAripheticSubject["Математика"])
+//-------------------------------------------------------------------------------------
+//                      2 второй способ удачный. Много вложенная структура, использовать в браузре.
+//                Обязательно использовать методе objNew() чтобы сделать список всех предметов для добавления в них оценки                               
+// class Student {
+//   constructor(...arg) { 
+//  [this.name, this.gender, this.age] = arg 
+//   this.subjectsGrades = []
+// }; 
+
+// setSubjecc(subjectNames) {
+//   if(this.subjectName === undefined) {
+//     this.setSubjecs = [];
+//     this.setSubjecs.push(subjectNames);
+//     return this.setSubjecs;
+//   }else {
+//     this.setSubjecs.push(subjectNames);
+//     return this.setSubjecs;
+//   }
+// };
+
+// setSubjec(...subjectNames) {
+//   if(this.setSubjecs === undefined) {
+//     this.setSubjecs = [];
+//     subjectNames.map(el => this.setSubjecs.push(el));
+//     return this.setSubjecs
+//   }else {
+//     subjectNames.map(el => this.setSubjecs.push(el));
+//     return this.setSubjecs
+//   }         
+// };
+
+// objNew() {
+//   let obj = this.setSubjecs.map( el => {return {[el]:[]}})
+//   // if( this.subjectsGrades.length < 1)
+//   this.subjectsGrades = obj
+//   // return obj
+// };
+ 
+// addMark(estimation, nameSubject){
+//   if(estimation >= 1 && estimation < 6){
+//   let el = this.subjectsGrades.findIndex(el => Object.keys(el).join() == nameSubject)
+//   student.subjectsGrades[el][nameSubject].push(estimation)
+//   }else console.log("Ошибка, оценка должна быть числом от 1 до 5")
+// };
+
+// addMarks(nameSubject,...estimation){
+//   if(estimation.every( el => el >= 1 && el < 6)){ 
+//   let ell = this.subjectsGrades.findIndex(el => Object.keys(el).join() == nameSubject)
+//   estimation.map(el => student.subjectsGrades[ell][nameSubject].push(el))
+//   }else console.log("Ошибка, оценка должна быть числом от 1 до 5")
+// };
+
+// getAverageBySubject(nameSubject){ 
+//   if(this.setSubjecs.includes(nameSubject)){ 
+//   let ell = this.subjectsGrades.findIndex(el => Object.keys(el).join() == nameSubject)
+//   let sum = student.subjectsGrades[ell][nameSubject].reduce((sum, current) => sum + current)  
+//   let mediumAriphetic = Number((sum / student.subjectsGrades[ell][nameSubject].length).toFixed(2)) 
+//   student.subjectsGrades[ell].mediumAriphetic = mediumAriphetic
+//   // this.mediumAripheti = mediumAriphetic
+//   }else console.log("Несуществующий предмет")
+// };
+
+// getAverage(){
+//   let arrObjNameSubject = student.subjectsGrades.filter( el => Object.keys(el).length > 1).map(el => el.mediumAriphetic)
+//   let sum = arrObjNameSubject.reduce((sum, current) => sum + current)
+//   let mediumAripheticAll = Number((sum / arrObjNameSubject.length).toFixed(2))
+//   this.mediumAripheticAllSubjectsGrades = mediumAripheticAll
+// };
+
+// exclude(reason){
+//   delete this.mediumAripheticAllSubjectsGrades;
+//   delete this.setSubjecs;
+//   delete this.subjectsGrades;
+//   this.excluded = reason;
+// };
+
+// }
+
+// let student = new Student("Тема","муж",29)
+// student.setSubjec("ОБЖ")
+// student.setSubjec("algebra","Геометрия","Русский","Физика","Литература")
+// student.objNew()
+// console.log(student)
+// student.addMark(4,"Русский")
+// student.addMark(5,"Геометрия")
+// student.addMarks("Геометрия", 5,4,4,5,4,3)
+// student.addMarks("Русский", 5,3,4,2)
+// student.addMarks("Физика", 2,3,4,5,4,3)
+// student.getAverageBySubject("Геометрия")
+// student.getAverageBySubject("Русский")
+// student.getAverageBySubject("Физика")
+// student.getAverage()
+// console.log(student)
+
+
+  </script>
+
+    
+// </body>
+// </html>
