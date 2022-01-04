@@ -6,10 +6,10 @@ class AlarmClock {
     }
     
     addClock(time, Callback, id){
-        if(!id) throw new Error( 'error: невозможно индетифицировать будильник. Параметр id не передан' )
+        if(!id) throw new Error( 'Error: невозможно индетифицировать будильник. Параметр id не передан' )
         
         if (this.alarmCollection.some(el => el.id === id)) {
-			console.error(`Звонок с данным id ${id} уже зарегестрирован!`);
+			console.error(`Звонок с таким id ${id} уже сушествует`);
 			return;
 		};
 
