@@ -1,62 +1,61 @@
-//task 1
+//                            task 1
 
 function cachingDecoratorNew(func) {
   let cache = [];
-  function wrapper(...rest) {
-    let hash = rest.join(',');
-    let existResult = cache.filter(cacheRecord => cacheRecord.hash === hash);
-    if (existResult.length === 1) {
-        console.log('Из кэша: ' + existResult[0].value);
-        return 'Из кэша: ' + existResult[0].value;
-    } 
-    else {
-      let value = func.call(this, ...rest);
-      console.log('Вычисляем: ' + value);
-      if (cache.length < 5) {   
-        cache.push({hash, value});
-      } 
-      else {
-        cache.unshift({hash, value});
-        cache.pop();
-      } 
-      return 'Вычисляем: ' + value;
-    }
+  
+  function wrapper(...args) {
+      const hash = args.join(',') // получаем правильный хэш
+      let idx = cache.findIndex((cacheRecord)=> cacheRecord.hash === hash); // ищем элемент, хэш которого равен нашему хэшу
+      if (idx !== -1 ) { // если элемент не найден
+          console.log("Из кэша: " + cache[idx].result); // индекс нам известен, по индексу в массиве лежит объект, как получить нужное значение?
+          return "Из кэша: " + cache[idx].result;
+      }
+  
+      let result = func.call(this,...args); // в кэше результата нет - придётся считать
+      cache.push({hash, result}) ; // добавляем элемент с правильной структурой
+      if (cache.length > 5) { 
+        cache.push({hash, result}); // если слишком много элементов в кэше надо удалить самый старый (первый) 
+      }
+      console.log("Вычисляем: " + result);
+      return "Вычисляем: " + result;  
   }
   return wrapper;
+
 }
 
-
-// task 2
+//                            task 2
 
 function debounceDecoratorNew(func, ms) {
 
-  let timeout;
+  let timeout = null;;
   let repeatCall = false;
-
+  
   function wrapper(...rest) {
 
-    if (!repeatCall) {
-      func.apply(this, ...rest);
-      repeatCall = true;
-      return;
-    }
-    clearTimeout(timeout)
+    clearTimeout(timeout);
     timeout = setTimeout(() => {
-      repeatCall = false
-      func.apply(this, ...rest)
-    }, ms)
+      repeatCall = false;
+      return func.call(...rest);
+    }, delay);
+    if (!repeatCall) {
+      repeatCall = true;
+      func.call(...rest);
+    }
   }
+
   return wrapper;
 }
+  
 
+//                             task 3     
+function debounceDecorator2(func) {
 
-//task 3
+  let counter = 0;
 
-function debounceDecorator2(debounceDecoratorNew) {
-  let count = 0;
   function wrapper(...rest) {
-    wrapper.history = count++;
-    return debounceDecoratorNew.call(this, ...rest);
+    wrapper.count = ++counter;
+    return func.call(this, ...rest);
   }
+
   return wrapper;
 }
