@@ -48,14 +48,23 @@ function debounceDecoratorNew(func, ms) {
   
 
 //                             task 3     
-function debounceDecorator2(func) {
+function debounceDecorator2(func, ms) {
 
-  let counter = 0;
+  let timer = null;
+  let timerStatus = false;
+  wrapper.count = 0;
 
   function wrapper(...rest) {
-    wrapper.count = ++counter;
-    return func.call(this, ...rest);
-  }
-
-  return wrapper;
+    ++wrapper.count;
+    if (!timerStatus) {
+      func.call(this, ...rest);  
+    };
+    timerStatus = true;
+	  clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.call(this, ...rest);
+	    timerStatus = false;
+    }, ms);  
+  };
+  return wrapper;  
 }
